@@ -16,7 +16,9 @@ end
 
 
 World do
-  Webrat::SinatraSession.new
+  session = Webrat::SinatraSession.new
+  session.extend(Webrat::Matchers)
+  session
 end
 
 

@@ -28,3 +28,18 @@ end
 get '/' do
  'bla'
 end
+
+DB = 'http://localhost:5984/cd'
+
+get '/cds/:_id' do
+  data = RestClient.get "#{DB}/#{params[:_id]}"
+  result = JSON.parse(data)
+  %Q{
+<h1>#{result['title']}</h1>
+<p>by #{result['artist']}</p>
+<p>#{result['tracks']}</p>
+<p>navigation and links to recipes would go here...</p>
+<div>
+</div>
+}
+end
